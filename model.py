@@ -75,3 +75,23 @@ with open('besede.txt', 'r') as d:
 
 def nova_igra():
     return Igra(random.choice(bazen_besed))
+
+class Vislice:
+    def __init__(self, igra):
+        self.igra = {}
+
+    def prost_id_igre(self):
+        if self.igra == {}:
+            return 0
+        else:
+            return max(self.igra.keys()) + 1
+        
+    def nova_igra(self):
+        id_igre = self.prost_id_igre()
+        igra = nova_igra()
+        self.igra[id_igre] = (igra, ZACETEK)
+        return id_igre
+    
+    def ugibaj(self, id_igre, crka):
+        igra = self.igra[id_igre][0]
+        
