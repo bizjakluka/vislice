@@ -69,13 +69,15 @@ class Igra:
                 return PRAVILNA_CRKA
 
 bazen_besed = []
-with open('besede.txt', 'r') as d:
+with open('besede.txt', 'r', encoding='utf-8') as d:
     for vrstica in d:
         bazen_besed.append(vrstica.upper().strip())
 
 def nova_igra():
     return Igra(random.choice(bazen_besed))
 
+
+ZACETEK = nova_spemenljivka
 class Vislice:
     def __init__(self, igra):
         self.igra = {}
@@ -93,5 +95,7 @@ class Vislice:
         return id_igre
     
     def ugibaj(self, id_igre, crka):
-        igra = self.igra[id_igre][0]
-        
+        igra, _ = self.igra[id_igre][0]
+        poskus = igra.ugibaj(crka)
+        self.igre[id_igre] = (igra, poskus)
+
