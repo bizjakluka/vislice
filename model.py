@@ -77,9 +77,9 @@ def nova_igra():
     return Igra(random.choice(bazen_besed))
 
 
-ZACETEK = nova_spemenljivka
+
 class Vislice:
-    def __init__(self, igra):
+    def __init__(self):
         self.igra = {}
 
     def prost_id_igre(self):
@@ -97,5 +97,5 @@ class Vislice:
     def ugibaj(self, id_igre, crka):
         igra, _ = self.igra[id_igre][0]
         poskus = igra.ugibaj(crka)
-        self.igre[id_igre] = (igra, poskus)
+        self.igra[id_igre] = (igra, poskus)
 
